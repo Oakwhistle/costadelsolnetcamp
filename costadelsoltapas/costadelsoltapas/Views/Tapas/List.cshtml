@@ -1,0 +1,23 @@
+﻿@model IEnumerable<costadelsoltapas.Models.Tapas>
+
+
+    <html>
+
+    <body>
+        @foreach (var tapas in Model)
+        {
+            <div class="col-sm-4 col-lg-4 col-md-4">
+                <div class="thumbnail">
+                    <img src="@tapas.ImageThumbnailUrl" alt="" style="width:400px;height:400px;">
+                    <div class="caption">
+                        <h3 class="pull-right">@tapas.Price.ToString("c")</h3>
+                        <h3>
+                            <a>@tapas.Name</a>
+                        </h3>
+                        <p>@tapas.ShortDescription</p>
+                    </div>
+                </div>
+            </div>
+        }
+    </body>
+    </html>
