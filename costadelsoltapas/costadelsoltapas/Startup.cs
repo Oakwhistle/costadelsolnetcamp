@@ -6,6 +6,7 @@ using costadelsoltapas.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -14,17 +15,19 @@ namespace costadelsoltapas
 {
     public class Startup
     {
+        public IConfiguration Configuration { get; }
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
         }
 
-        public IConfiguration Configuration { get; }
-
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddScoped<ITapasRepository, MockTapasRepository>();
-            services.AddScoped<ICategoryRepository, MockCategoryRepository>();
+            services.AddDbContext<AppDbContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
+            services.AddScoped<ITapasRepository, TapasRepository>();
+            services.AddScoped<ICategoryRepository, CategoryRepository>();
             services.AddControllersWithViews();
         }
 
