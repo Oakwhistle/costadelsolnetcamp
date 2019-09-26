@@ -22,5 +22,13 @@ namespace costadelsoltapas.Controllers
         {
             return View(_tapasRepository.AllTapas);
         }
+
+        public IActionResult Details(int ID)
+        {
+            var Tapas = _tapasRepository.GetTapasById(ID);
+            //if (tapa == null)
+            //    return NotFound();
+            return View(Tapas);
+        }
     }
 }

@@ -28,6 +28,9 @@ namespace costadelsoltapas
 
             services.AddScoped<ITapasRepository, TapasRepository>();
             services.AddScoped<ICategoryRepository, CategoryRepository>();
+            services.AddScoped<ShoppingCart>(sp => ShoppingCart.GetCart(sp));
+            services.AddHttpContextAccessor();
+            services.AddSession();
             services.AddControllersWithViews();
         }
 
@@ -45,10 +48,11 @@ namespace costadelsoltapas
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+            app.UseSession();
 
             app.UseRouting();
 
-            app.UseAuthorization();
+            //app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {

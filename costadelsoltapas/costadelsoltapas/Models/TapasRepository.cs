@@ -30,9 +30,9 @@ namespace costadelsoltapas.Models
             }
         }
 
-        public Tapas GetTapasById(int TapasId)
+        public Tapas GetTapasById(int tapasID)
         {
-            return _appDbContext.Tapas.FirstOrDefault(p => p.TapasID == TapasId);
+            return _appDbContext.Tapas.FirstOrDefault(p => p.TapasID == tapasID);
         }
     }
 }

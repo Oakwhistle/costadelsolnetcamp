@@ -18,7 +18,7 @@ namespace costadelsoltapas.Models
         public bool IsTapasOfTheWeek { get; set; }
         public bool InStock { get; set; }
         public int CategoryId { get; set; }
-        public Category Category { get; set; }
+        public Category Category { get; set; } 
 
     }
 }

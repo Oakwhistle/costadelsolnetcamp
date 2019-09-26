@@ -15,6 +15,7 @@ namespace costadelsoltapas.Models
 
         public DbSet<Tapas> Tapas { get; set; }
         public DbSet<Category> Categories { get; set; }
+        public DbSet<ShoppingCartItem> ShoppingCartItems { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
