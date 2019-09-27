@@ -1,28 +1,9 @@
-﻿
-@model IEnumerable<costadelsoltapas.Models.Tapas>
+﻿@model TapasListViewModel
 
 
+<h1>@Model.CurrentCategory</h1>
 
-@foreach (var tapas in Model)
+@foreach (var tapa in Model.Tapas)
 {
-    <div class="col-sm-4 col-lg-4 col-md-4">
-        <div class="thumbnail" style="">
-            <img src="@tapas.ImageUrl" alt="" style="width:400px;height:300px;">
-            <div class="caption">
-                <h3 class="pull-right">@tapas.Price.ToString("c")</h3>
-                <h3>
-                    <a class="nav-link text-dark" asp-controller="Tapas" asp-action="Details" asp-route-id="@tapas.TapasID">@tapas.Name</a>
-                </h3>
-                <p>@tapas.ShortDescription</p>
-            </div>
-            <div class="addToCart">
-                <p class="button">
-                    <a class="btn btn-primary"
-                       asp-controller="ShoppingCart"
-                       asp-action="AddToShoppingCart"
-                       asp-route-TapasID="@tapas.TapasID">Add to cart</a>
-                </p>
-            </div>
-        </div>
-    </div>
+    <partial name="_TapasCard" model="tapa" />
 }

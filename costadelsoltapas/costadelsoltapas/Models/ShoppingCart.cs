@@ -28,24 +28,24 @@ namespace costadelsoltapas.Models
 
             var context = services.GetService<AppDbContext>();
 
-            string cartID = session.GetString("CartId") ?? Guid.NewGuid().ToString();
+            string cartId = session.GetString("CartId") ?? Guid.NewGuid().ToString();
 
-            session.SetString("CartId", cartID);
+            session.SetString("CartId", cartId);
 
-            return new ShoppingCart(context) { ShoppingCartId = cartID };
+            return new ShoppingCart(context) { ShoppingCartId = cartId };
         }
 
         public void AddToCart(Tapas tapas, int amount)
         {
             var shoppingCartItem =
                     _appDbContext.ShoppingCartItems.SingleOrDefault(
-                        s => s.Tapas.TapasID == tapas.TapasID && s.ShoppingCartID == ShoppingCartId);
+                        s => s.Tapas.TapasId == tapas.TapasId && s.ShoppingCartId == ShoppingCartId);
 
             if (shoppingCartItem == null)
             {
                 shoppingCartItem = new ShoppingCartItem
                 {
-                    ShoppingCartID = ShoppingCartId,
+                    ShoppingCartId = ShoppingCartId,
                     Tapas = tapas,
                     Amount = 1
                 };
@@ -63,7 +63,7 @@ namespace costadelsoltapas.Models
         {
             var shoppingCartItem =
                     _appDbContext.ShoppingCartItems.SingleOrDefault(
-                        s => s.Tapas.TapasID == tapas.TapasID && s.ShoppingCartID == ShoppingCartId);
+                        s => s.Tapas.TapasId == tapas.TapasId && s.ShoppingCartId == ShoppingCartId);
 
             var localAmount = 0;
 
@@ -89,7 +89,7 @@ namespace costadelsoltapas.Models
         {
             return ShoppingCartItems ??
                    (ShoppingCartItems =
-                       _appDbContext.ShoppingCartItems.Where(c => c.ShoppingCartID == ShoppingCartId)
+                       _appDbContext.ShoppingCartItems.Where(c => c.ShoppingCartId == ShoppingCartId)
                            .Include(s => s.Tapas)
                            .ToList());
         }
@@ -98,7 +98,7 @@ namespace costadelsoltapas.Models
         {
             var cartItems = _appDbContext
                 .ShoppingCartItems
-                .Where(cart => cart.ShoppingCartID == ShoppingCartId);
+                .Where(cart => cart.ShoppingCartId == ShoppingCartId);
 
             _appDbContext.ShoppingCartItems.RemoveRange(cartItems);
 
@@ -107,7 +107,7 @@ namespace costadelsoltapas.Models
 
         public decimal GetShoppingCartTotal()
         {
-            var total = _appDbContext.ShoppingCartItems.Where(c => c.ShoppingCartID == ShoppingCartId)
+            var total = _appDbContext.ShoppingCartItems.Where(c => c.ShoppingCartId == ShoppingCartId)
                 .Select(c => c.Tapas.Price * c.Amount).Sum();
             return total;
         }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using costadelsoltapas.Models;
+using costadelsoltapas.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
 namespace costadelsoltapas.Controllers
@@ -32,9 +33,9 @@ namespace costadelsoltapas.Controllers
             return View(shoppingCartViewModel);
         }
 
-        public RedirectToActionResult AddToShoppingCart(int tapasID)
+        public RedirectToActionResult AddToShoppingCart(int tapasId)
         {
-            var selectedTapa = _tapasRepository.AllTapas.FirstOrDefault(p => p.TapasID == tapasID);
+            var selectedTapa = _tapasRepository.AllTapas.FirstOrDefault(p => p.TapasId == tapasId);
 
             if (selectedTapa != null)
             {
@@ -43,9 +44,9 @@ namespace costadelsoltapas.Controllers
             return RedirectToAction("Index");
         }
 
-        public RedirectToActionResult RemoveFromShoppingCart(int tapasID)
+        public RedirectToActionResult RemoveFromShoppingCart(int tapasId)
         {
-            var selectedTapa = _tapasRepository.AllTapas.FirstOrDefault(p => p.TapasID == tapasID);
+            var selectedTapa = _tapasRepository.AllTapas.FirstOrDefault(p => p.TapasId == tapasId);
 
             if (selectedTapa != null)
             {

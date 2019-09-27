@@ -9,6 +9,6 @@ namespace costadelsoltapas.Models
     {
         IEnumerable<Tapas> AllTapas { get; }
         IEnumerable<Tapas> TapasOfTheWeek { get; }
-        Tapas GetTapasById(int TapasID);
+        Tapas GetTapasById(int TapasId);
     }
 }

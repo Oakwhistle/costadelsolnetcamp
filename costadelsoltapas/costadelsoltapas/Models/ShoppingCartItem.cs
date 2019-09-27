@@ -7,10 +7,9 @@ namespace costadelsoltapas.Models
 {
     public class ShoppingCartItem
     {
-        public int ShoppingCartItemID { get; set; }
+        public int ShoppingCartItemId { get; set; }
         public Tapas Tapas { get; set; }
         public int Amount { get; set; }
-        public string ShoppingCartID { get; set; }
-
+        public string ShoppingCartId { get; set; }
     }
 }

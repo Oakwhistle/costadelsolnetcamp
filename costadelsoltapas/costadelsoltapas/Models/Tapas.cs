@@ -7,7 +7,7 @@ namespace costadelsoltapas.Models
 {
     public class Tapas
     {
-        public int TapasID { get; set; }
+        public int TapasId { get; set; }
         public string Name { get; set; }
         public string ShortDescription { get; set; }
         public string LongDescription { get; set; }
@@ -18,7 +18,6 @@ namespace costadelsoltapas.Models
         public bool IsTapasOfTheWeek { get; set; }
         public bool InStock { get; set; }
         public int CategoryId { get; set; }
-        public Category Category { get; set; } 
-
+        public Category Category { get; set; }
     }
 }

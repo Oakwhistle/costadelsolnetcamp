@@ -1,21 +1,24 @@
-﻿using Microsoft.EntityFrameworkCore;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 
 namespace costadelsoltapas.Models
 {
-    public class AppDbContext : DbContext
+    public class AppDbContext: IdentityDbContext<IdentityUser>
     {
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {
 
         }
-
-        public DbSet<Tapas> Tapas { get; set; }
         public DbSet<Category> Categories { get; set; }
+        public DbSet<Tapas> Tapas { get; set; }
         public DbSet<ShoppingCartItem> ShoppingCartItems { get; set; }
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<OrderDetail> OrderDetails { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -30,7 +33,7 @@ namespace costadelsoltapas.Models
 
             modelBuilder.Entity<Tapas>().HasData(new Tapas
             {
-                TapasID = 1,
+                TapasId = 1,
                 Name = "Tortilla de Patatas",
                 Price = 5.95M,
                 ShortDescription = "Simple yet delicious.",
@@ -45,7 +48,7 @@ namespace costadelsoltapas.Models
 
             modelBuilder.Entity<Tapas>().HasData(new Tapas
             {
-                TapasID = 2,
+                TapasId = 2,
                 Name = "Croquetas del Dia",
                 Price = 8.95M,
                 ShortDescription = "Delicate confection, strong flavor!",
@@ -53,14 +56,14 @@ namespace costadelsoltapas.Models
                 CategoryId = 1,
                 ImageUrl = "http://www.importdelicia.com/contenido/noticias/600_img_36.jpg",
                 InStock = true,
-                IsTapasOfTheWeek = false,
+                IsTapasOfTheWeek = true,
                 ImageThumbnailUrl = "http://www.importdelicia.com/contenido/noticias/600_img_36.jpg"
 
             });
 
             modelBuilder.Entity<Tapas>().HasData(new Tapas
             {
-                TapasID = 3,
+                TapasId = 3,
                 Name = "Polbo a Feira",
                 Price = 12.95M,
                 ShortDescription = "Lets see what Paul the octopus has to say.",
@@ -68,14 +71,14 @@ namespace costadelsoltapas.Models
                 CategoryId = 1,
                 ImageUrl = "http://porsolea.com/wp-content/uploads/2017/04/pulpo-a-la-gallega-2.jpg",
                 InStock = true,
-                IsTapasOfTheWeek = true,
+                IsTapasOfTheWeek = false,
                 ImageThumbnailUrl = "http://porsolea.com/wp-content/uploads/2017/04/pulpo-a-la-gallega-2.jpg"
 
             });
 
             modelBuilder.Entity<Tapas>().HasData(new Tapas
             {
-                TapasID = 4,
+                TapasId = 4,
                 Name = "Tostas Costa del Sol",
                 Price = 20.95M,
                 ShortDescription = "The most versatile tapas made with the best ingredients, all year long.",
@@ -90,7 +93,7 @@ namespace costadelsoltapas.Models
 
             modelBuilder.Entity<Tapas>().HasData(new Tapas
             {
-                TapasID = 5,
+                TapasId = 5,
                 Name = "Jamon Iberico",
                 Price = 20.95M,
                 ShortDescription = "A tapa you will not forget.",

@@ -1,37 +1,30 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using costadelsoltapas.Models;
+using costadelsoltapas.ViewModels;
+using Microsoft.AspNetCore.Mvc;
 
 namespace costadelsoltapas.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly ITapasRepository _tapasRepository;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ITapasRepository tapasRepository)
         {
-            _logger = logger;
+            _tapasRepository = tapasRepository;
         }
 
         public IActionResult Index()
         {
-            return View();
-        }
+            var homeViewModel = new HomeViewModel
+            {
+                TapasOfTheWeek = _tapasRepository.TapasOfTheWeek
+            };
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            return View(homeViewModel);
         }
     }
 }

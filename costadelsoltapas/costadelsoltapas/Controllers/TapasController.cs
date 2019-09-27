@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using costadelsoltapas.Models;
+using costadelsoltapas.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
 namespace costadelsoltapas.Controllers
@@ -18,17 +19,38 @@ namespace costadelsoltapas.Controllers
             _categoryRepository = categoryRepository;
         }
 
-        public ViewResult List()
+        public ViewResult List(string category)
         {
-            return View(_tapasRepository.AllTapas);
+            IEnumerable<Tapas> tapas;
+            string currentCategory;
+
+            if (string.IsNullOrEmpty(category))
+            {
+                tapas = _tapasRepository.AllTapas.OrderBy(p => p.TapasId);
+                currentCategory = "All tapas";
+            }
+            else
+            {
+                tapas = _tapasRepository.AllTapas.Where(p => p.Category.CategoryName == category)
+                    .OrderBy(p => p.TapasId);
+                currentCategory = _categoryRepository.AllCategories.FirstOrDefault(c => c.CategoryName == category)?.CategoryName;
+            }
+
+            return View(new TapasListViewModel
+            {
+                Tapas = tapas,
+                CurrentCategory = currentCategory
+            });
         }
 
-        public IActionResult Details(int ID)
+
+        public IActionResult Details(int id)
         {
-            var Tapas = _tapasRepository.GetTapasById(ID);
-            //if (tapa == null)
-            //    return NotFound();
-            return View(Tapas);
+            var tapas = _tapasRepository.GetTapasById(id);
+            if (tapas == null)
+                return NotFound();
+
+            return View(tapas);
         }
     }
 }
