@@ -44,6 +44,7 @@ namespace costadelsoltapas.Controllers
             return RedirectToAction("Index");
         }
 
+        [Route("/ShoppingCart/Remove", Name = "Remove")]
         public RedirectToActionResult RemoveFromShoppingCart(int tapasId)
         {
             var selectedTapa = _tapasRepository.AllTapas.FirstOrDefault(p => p.TapasId == tapasId);
@@ -52,7 +53,10 @@ namespace costadelsoltapas.Controllers
             {
                 _shoppingCart.RemoveFromCart(selectedTapa);
             }
+
+            // ViewBag.RemoveMessage = "The item has been succesfully removed from your shopping cart!";
             return RedirectToAction("Index");
         }
+
     }
 }

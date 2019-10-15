@@ -8,7 +8,8 @@
             <th>Selected amount</th>
             <th>Tapa</th>
             <th class="text-right">Price</th>
-            <th class="text-right">Subtotal</th> 
+            <th class="text-right">Subtotal</th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -21,6 +22,10 @@
                 <td class="text-right">
                     @((line.Amount * line.Tapas.Price).ToString("c"))
                 </td>
+                <td class="text-center">
+                    <a class="btn btn-primary" asp-controller="Tapas" asp-action="Details" asp-route-id="@line.Tapas.TapasId">Add/Remove</a>
+                </td>
+                
             </tr>
         }
     </tbody>
