@@ -45,9 +45,10 @@ namespace costadelsoltapas.Controllers
         }
 
         [Route("/ShoppingCart/Remove", Name = "Remove")]
-        public RedirectToActionResult RemoveFromShoppingCart(int tapasId)
+        public RedirectToActionResult RemoveFromShoppingCart(int id) // tapasId
         {
-            var selectedTapa = _tapasRepository.AllTapas.FirstOrDefault(p => p.TapasId == tapasId);
+            var selectedTapa = _tapasRepository.GetTapasById(id);
+            //var selectedTapa = _tapasRepository.AllTapas.FirstOrDefault(p => p.TapasId == tapasId);
 
             if (selectedTapa != null)
             {
@@ -55,6 +56,25 @@ namespace costadelsoltapas.Controllers
             }
 
             // ViewBag.RemoveMessage = "The item has been succesfully removed from your shopping cart!";
+            return RedirectToAction("Index");
+        }
+
+        public RedirectToActionResult IncreaseAmount(int id)
+        {
+            var selectedTapa = _tapasRepository.GetTapasById(id);
+
+            if (selectedTapa != null)
+            {
+                _shoppingCart.AddToCart(selectedTapa, 1);
+            }
+
+            return RedirectToAction("Index");
+        }
+
+        public RedirectToActionResult ClearCart()
+        {
+            _shoppingCart.ClearCart();
+
             return RedirectToAction("Index");
         }
 

@@ -23,7 +23,8 @@
                     @((line.Amount * line.Tapas.Price).ToString("c"))
                 </td>
                 <td class="text-center">
-                    <a class="btn btn-primary" asp-controller="Tapas" asp-action="DetailsCart" asp-route-id="@line.Tapas.TapasId">Add/Remove</a>
+                    <a class="btn btn-primary" align="center" asp-controller="ShoppingCart" asp-action="IncreaseAmount" asp-route-id="@line.Tapas.TapasId">Add</a>
+                    <a class="btn btn-primary"align="center" asp-controller="ShoppingCart" asp-action="RemoveFromShoppingCart" asp-route-id="@line.Tapas.TapasId">Remove</a>
                 </td>
                 
             </tr>
@@ -34,6 +35,9 @@
             <td colspan="3" class="text-right">Total:</td>
             <td class="text-right">
                 @Model.ShoppingCartTotal.ToString("c")
+            </td>
+            <td class="text-center align-middle">
+                <a class="btn btn-primary" asp-controller="ShoppingCart" asp-action="ClearCart">Clear</a>
             </td>
         </tr>
     </tfoot>

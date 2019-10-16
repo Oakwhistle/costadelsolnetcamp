@@ -26,8 +26,15 @@ using costadelsoltapas.ViewModels;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 3 "C:\Users\Oakwhistle\Source\GitPlace\CDSTapas\costadelsoltapas\costadelsoltapas\Views\_ViewImports.cshtml"
+using costadelsoltapas.Controllers;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"007ec7cb6b1dd5198d4a27ad468aafc0703b91f3", @"/Views/Tapas/Details.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"04ae9d0040c316d276aac59dc3544048644db50d", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"0e7322652e867133fd11ee8c388457f799ca7303", @"/Views/_ViewImports.cshtml")]
     public class Views_Tapas_Details : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<Tapas>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("class", new global::Microsoft.AspNetCore.Html.HtmlString("btn btn-primary"), global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -118,7 +125,7 @@ WriteAttributeValue("", 99, Model.ImageUrl, 99, 15, false);
 #line hidden
 #nullable disable
             WriteLiteral("</p>\r\n        <div class=\"addToCart\">\r\n            <p class=\"button\">\r\n                ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "007ec7cb6b1dd5198d4a27ad468aafc0703b91f36516", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "007ec7cb6b1dd5198d4a27ad468aafc0703b91f36738", async() => {
                 WriteLiteral("Add to cart");
             }
             );

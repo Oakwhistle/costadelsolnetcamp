@@ -419,3 +419,4 @@ C:\Users\Oakwhistle\Source\GitPlace\CDSTapas\costadelsoltapas\costadelsoltapas\o
 C:\Users\Oakwhistle\Source\GitPlace\CDSTapas\costadelsoltapas\costadelsoltapas\obj\Release\netcoreapp3.0\win-x86\costadelsoltapas.csproj.CopyComplete
 C:\Users\Oakwhistle\Source\GitPlace\CDSTapas\costadelsoltapas\costadelsoltapas\obj\Release\netcoreapp3.0\win-x86\costadelsoltapas.dll
 C:\Users\Oakwhistle\Source\GitPlace\CDSTapas\costadelsoltapas\costadelsoltapas\obj\Release\netcoreapp3.0\win-x86\costadelsoltapas.pdb
+C:\Users\Oakwhistle\Source\GitPlace\CDSTapas\costadelsoltapas\costadelsoltapas\obj\Release\netcoreapp3.0\win-x86\Razor\Views\Tapas\DetailsCart.cshtml.g.cs
